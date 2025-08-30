@@ -1,0 +1,29 @@
+package com.excelr.rest;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class WelcomeRestController {
+
+    private static final String SERVICE_NAME = "redisService";
+
+    @GetMapping("/redis")
+    @CircuitBreaker(name = SERVICE_NAME, fallbackMethod = "getDataFromDb")
+    public String getDataFromRedis() {
+    	  try {
+    	        int result = 10 / 0; // or some variable you are dividing by
+    	        return "Result is: " + result;
+    	    } catch (ArithmeticException e) {
+    	        // You can log the error or return a fallback value/message
+    	        return "Error: Division by zero is not allowed.";
+    	    }
+    }
+
+    // Fallback method must have the same return type and accept the exception as parameter
+    public String getDataFromDb(Throwable t) {
+        System.out.println("Database() called.......");
+        return "Getting data from database()......";
+    }
+}

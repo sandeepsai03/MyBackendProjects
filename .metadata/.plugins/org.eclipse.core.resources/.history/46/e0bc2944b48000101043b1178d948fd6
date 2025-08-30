@@ -1,0 +1,2 @@
+spring.application.name=SpringBootAppEurekaServer
+eureka.client.register-with-eureka=false

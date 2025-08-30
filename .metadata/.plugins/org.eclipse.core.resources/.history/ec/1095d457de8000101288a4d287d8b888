@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: SpringBootAppConfigClient-1
+  server:
+    port: 9090  # Config the client port

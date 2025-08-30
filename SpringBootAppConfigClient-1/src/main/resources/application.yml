@@ -1,0 +1,8 @@
+server:
+   port: 9090  # Config the client port
+spring:
+  application:
+    name: SpringBootAppConfigClient-1
+  logging:
+    level:
+    org.springframework.cloud.config.client: DEBUG

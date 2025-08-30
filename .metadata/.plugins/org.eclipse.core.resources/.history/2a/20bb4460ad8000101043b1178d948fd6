@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: SpringBootAppApiGateway
+
+		  cloud:
+		    gateway:
+		      discovery:
+		        locator:
+		          enabled: true  # Enables automatic service discovery for routes
+		      routes:
+		        - id: marchfirstrestapi
+		          uri: lb://MarchFirstRestControllerRestApi  # Use Eureka service name
+		          predicates:
+		            - Path=/first/**  # Forward requests matching /first to the service
+
+		server:
+		  port: 9785
+
+		eureka:
+		  client:
+		    service-url:
+		      defaultZone: http://localhost:8761/eureka/
+		    fetch-registry: true     # Enables fetching registered services from Eureka
+		    register-with-eureka: true  # Registers this API Gateway with Eureka

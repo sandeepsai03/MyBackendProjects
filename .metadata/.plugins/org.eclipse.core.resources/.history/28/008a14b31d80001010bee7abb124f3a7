@@ -1,0 +1,5 @@
+spring.application.name=SpringBootAppFirstRestController
+server.port=2222
+eureka.client.service-url=http://localhost:8081/eureka/
+spring.boot.admin.client.url=http://localhost:8082/
+management.endpoints.web.exposure.include= *

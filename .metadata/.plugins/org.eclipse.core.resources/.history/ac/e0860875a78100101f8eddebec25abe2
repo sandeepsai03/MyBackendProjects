@@ -1,0 +1,10 @@
+package com.excelr.logic;
+
+public class LogicClass {
+
+	public Integer add(Integer a,Integer b) {
+	
+		return a+b;
+	}
+	
+}

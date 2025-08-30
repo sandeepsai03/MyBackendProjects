@@ -1,0 +1,12 @@
+package com.excelr.client;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+@FeignClient(name="SpringBootAppFirstRestController",url="http://localhost:2222")
+public interface WelcomeApiClient {
+
+	@GetMapping("/first")
+	public String invokeMethodFromFirst();
+}

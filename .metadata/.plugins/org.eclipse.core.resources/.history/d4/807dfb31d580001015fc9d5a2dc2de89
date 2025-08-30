@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: SpringBootAppConfigServer
+cloud:
+  config:
+    server:
+      bootstrap: true  # Enable bootstrap for early loading of properties
+      composite:  # This allows you to define multiple configuration sources
+        - git:
+            uri: https://sandeepsai03:<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>@github.com/sandeepsai03/demo.git  # Replace <your_personal_access_token> with your actual token
+            clone-on-start: true
+        - native:  # A local directory where configuration files might be stored
+            searchLocations: https://github.com/sandeepsai03/demo.git  # You can replace this with your directory path
+management:
+  security:
+    enabled: false
+
+profiles:
+  active: git
+
+logging:
+  level:
+    org.springframework: DEBUG	

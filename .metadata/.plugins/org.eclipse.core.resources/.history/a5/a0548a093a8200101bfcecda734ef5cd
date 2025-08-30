@@ -1,0 +1,5 @@
+package com.excelr.response;
+
+public class ApiResponse {
+
+}

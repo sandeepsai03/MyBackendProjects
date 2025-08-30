@@ -1,0 +1,10 @@
+#this is application.proerties way
+#spring.security.user.name=saisandep
+#spring.security.user.password=sai123
+
+#this is yml code
+spring:
+  security:
+    user:
+      name: saisandep
+      password: sai123

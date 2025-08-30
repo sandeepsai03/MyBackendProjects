@@ -1,0 +1,5 @@
+package com.excelr.repository;
+
+public class ProductRepository {
+
+}

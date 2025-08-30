@@ -1,0 +1,28 @@
+package com.excelr.rest;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class WelcomeRestController {
+
+    private static final String SERVICE_NAME = "redisService";
+
+    @GetMapping("/redis")
+    @CircuitBreaker(name = SERVICE_NAME, fallbackMethod = "getDataFromDb")
+    public String getDataFromRedis() {
+        System.out.println("Redis() called.......");
+        
+        // Simulating Redis failure
+        int i = 12 / 0;
+
+        return "Getting data from Redis()......";
+    }
+
+    // Fallback method must have the same return type and accept the exception as parameter
+    public String getDataFromDb(Throwable t) {
+        System.out.println("Database() called.......");
+        return "Getting data from database()......";
+    }
+}

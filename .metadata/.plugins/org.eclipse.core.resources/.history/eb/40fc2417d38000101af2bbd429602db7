@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: SpringBootAppConfigServer
+cloud:
+  config:
+    server:
+      bootstrap: true  # Corrected placement
+      git:
+        uri: https://sandeepsai03:<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>@github.com/sandeepsai03/demo.git  # Ensure you replace <your_personal_access_token> with the actual token
+        clone-on-start: true
+management:
+  security:
+    enabled: false
+
+profiles:
+  active: git
+
+

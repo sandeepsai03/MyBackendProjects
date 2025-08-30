@@ -1,0 +1,42 @@
+package com.excelr.service;
+
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
+import com.excelr.entity.Product;
+import com.excelr.repository.ProductRepository;
+
+import jakarta.annotation.PostConstruct;
+
+@Service
+public class ProductService {
+
+    @Autowired
+    private ProductRepository repository;
+
+    @PostConstruct ///it is used for executing this method for only one time
+    public void initDB() {//inserting 200 records at a time automatically
+        Random random = new Random();
+        List<Product> products = IntStream.rangeClosed(1, 200)
+                .mapToObj(i -> new Product(null, "product " + i, random.nextInt(100), random.nextInt(50000)))
+                .collect(Collectors.toList());
+        repository.saveAll(products);
+    }
+
+    public List<Product> findAllProducts() {//retrive all the records
+        return repository.findAll();
+    }
+    
+    //retrive records based on pagination
+    public Page<Product> findProductsWithPagination(int page, int pageSize) {
+        // Adjust to 0-based page index
+        return repository.findAll(PageRequest.of(page - 1, pageSize));
+    }
+}

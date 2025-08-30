@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: SpringBootAppConfigServer
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        composite:
+          - type: git
+            git:
+              uri: https://github.com/sandeepsai03/demo.git
+              username: sandeepsai03
+              password: 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
+              clone-on-start: true
+          - type: native
+            native:
+              search-locations: C:\Users\saisa\Desktop\sts\SpringBootAppConfigServer  # Use actual local path
+
+management:
+  security:
+    enabled: false
+
+profiles:
+  active: composite
+
+logging:
+  level:
+    org.springframework.cloud.config: DEBUG

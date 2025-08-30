@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: SpringBootAppConfigServer
+cloud:
+  config:
+    server:
+      git:
+        uri: https://github.com/sandeepsai03/demo.git  # Ensure this is the correct Git repository URL
+        clone-on-start: true
+management:
+  security:
+    enabled: false
+
+profiles:
+  active: git

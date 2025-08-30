@@ -1,0 +1,12 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      redisService:
+        register-health-indicator: true
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 5         # Track the last 5 calls
+        minimum-number-of-calls: 5     # Need at least 5 calls before evaluating failure rate
+        failure-rate-threshold: 50     # If 50% of those fail, circuit opens
+        wait-duration-in-open-state: 60s
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true

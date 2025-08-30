@@ -1,0 +1,6 @@
+package com.excelr.dao;
+
+public interface UserDao {
+
+	
+}

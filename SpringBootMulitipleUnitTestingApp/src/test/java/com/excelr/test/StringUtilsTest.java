@@ -1,0 +1,17 @@
+package com.excelr.test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+import com.excelr.logic.StringUtils;
+
+public class StringUtilsTest {
+
+	@Test
+	public void testConvertToInt() {
+		String s="50";
+		assertThrows(IllegalArgumentException.class,()->StringUtils.convertToInt(s));//failure comes because of we are expecting exception but we are given string is not null
+	}
+	
+}

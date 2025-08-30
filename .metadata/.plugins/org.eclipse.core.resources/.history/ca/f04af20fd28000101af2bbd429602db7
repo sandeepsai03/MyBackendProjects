@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: SpringBootAppConfigServer
+cloud:
+  config:
+    server:
+      git:
+        uri: https://<sandeepsai03>:<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>@github.com/sandeepsai03/demo.git  # Ensure this is the correct Git repository URL
+        clone-on-start: true
+management:
+  security:
+    enabled: false
+
+profiles:
+  active: git
+
+#	There are a few common methods to authenticate with a GitHub repository:
+#	Personal Access Token (PAT)
+#	SSH Keys
+#	GitHub OAuth token

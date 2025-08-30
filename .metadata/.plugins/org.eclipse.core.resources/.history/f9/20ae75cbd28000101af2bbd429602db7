@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: SpringBootAppConfigServer
+cloud:
+  config:
+    server:
+      bootstrap: true  # Corrected indentation for bootstrap
+      git:
+        uri: https://sandeepsai03:<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>@github.com/sandeepsai03/demo.git  # Correct GitHub URL with token
+        clone-on-start: true
+management:
+  security:
+    enabled: false
+
+profiles:
+  active: git

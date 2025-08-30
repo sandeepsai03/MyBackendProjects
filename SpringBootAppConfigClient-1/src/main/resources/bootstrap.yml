@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8080 #this should be the config server URL
+  application:
+    name: application # this should match the name of the configuration file you want to fetch(e.g.,welcome.yml)

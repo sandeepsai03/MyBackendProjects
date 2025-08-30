@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: SpringBootAppConfigServer
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        git:
+          uri: https://github.com/sandeepsai03/demo.git
+          username: sandeepsai03
+          password: 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
+          clone-on-start: true
+          default-label: master  # or whatever your actual branch name is
+          skip-ssl-validation: true
+
+management:
+  security:
+    enabled: false
+
+logging:
+  level:
+    org.springframework.cloud.config: DEBUG
+    org.eclipse.jgit: DEBUG

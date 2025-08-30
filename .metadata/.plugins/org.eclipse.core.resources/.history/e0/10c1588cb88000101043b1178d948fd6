@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: SpringBootAppApiGateway
+
+  main:
+    web-application-type: reactive  # Correct indentation here
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  # Enables automatic service discovery for routes
+      routes:
+        - id: firstrestapi
+          uri: lb://SpringBootAppFirstRestController-1  # Use Eureka service name
+          predicates:
+            - Path=/first/**  # Forward requests matching /first to the service
+        - id: secondrestapi
+          uri: lb://SpringBootAppSecondRestController-1  # Use Eureka service name
+          predicates:
+            - Path=/second/**  # Forward requests matching /second to the service
+
+server:
+  port: 9785
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true     # Enables fetching registered services from Eureka
+    register-with-eureka: true  # Registers this API Gateway with Eureka

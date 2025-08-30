@@ -1,0 +1,27 @@
+package com.excelr.rest;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class WelcomeRestController {
+
+	@GetMapping("/redis")
+	public String getDataFromRedis() {
+	    System.out.println("Redis() called.......");
+	    try {
+	        int i = 12 / 0;  // This will throw ArithmeticException
+	    } catch (Exception e) {
+	        getDataFromDb();  // Fallback to DB if Redis fails
+	    }
+	    String msg = "Getting data from Redis()......";
+	    return msg;
+	}
+
+	public String getDataFromDb() {
+	    System.out.println("Database() called.......");
+	    String msg = "Getting data from database()......";
+	    return msg;
+	}
+
+}
